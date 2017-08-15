@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articles ={
+var articles = {
    'article-one': {
     title : 'article-one',
     heading: 'article one',
@@ -19,7 +19,7 @@ var articles ={
                 This is a random paragagraph simply to waste some lines
             </p>`
 },
- 'article-two' :{
+ 'article-two':{
     title : 'article-two',
     heading: 'article two',
     date: 'aug 23',
@@ -30,7 +30,7 @@ var articles ={
              <p>
                 This is a random paragagraph simply to waste some lines
             </p>`},
- 'article-three' :{
+ 'article-three':{
     title : 'article-three',
     heading: 'article three',
     date: 'aug 23',
