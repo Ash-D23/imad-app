@@ -5,7 +5,9 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne ={
+
+var articles ={
+   'article-one': {
     title : 'article-one',
     heading: 'article one',
     date: 'aug 23',
@@ -16,7 +18,31 @@ var articleOne ={
              <p>
                 This is a random paragagraph simply to waste some lines
             </p>`
+},
+ 'article-two' :{
+    title : 'article-two',
+    heading: 'article two',
+    date: 'aug 23',
+    content: `
+             <p>
+                This is a random two paragagraph simply to waste some lines
+             </p>
+             <p>
+                This is a random paragagraph simply to waste some lines
+            </p>`},
+ 'article-three' :{
+    title : 'article-three',
+    heading: 'article three',
+    date: 'aug 23',
+    content: `
+             <p>
+                This is a random third paragagraph simply to waste some lines
+             </p>
+             <p>
+                This is a random paragagraph simply to waste some lines
+            </p>`}
 };
+
 
 function createTemplate(data){
 var title = data.title;    
@@ -62,16 +88,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req, res){
- res.send(createTemplate(articleOne));
-});
-
-app.get('/article-two',function(req, res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three',function(req, res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+app.get('/:articleName',function(req, res){
+    var articleNmae = req.params.articleNmae;
+ res.send(createTemplate(articles[articleName]));
 });
 
 
